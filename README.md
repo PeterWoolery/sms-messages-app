@@ -35,3 +35,18 @@ $ npm start
 ```
 
 Navigate to [http://localhost:3000](http://localhost:3000) and you will see the application.
+* Inbox - [http://localhost:3000](http://localhost:3000)
+* Outbox - [http://localhost:3000/outbox](http://localhost:3000/outbox)
+* New Message - [http://localhost:3000/messages/new](http://localhost:3000/messages/new)
+* Specifc Convesation - [http://localhost:3000/messages/+18001112233](http://localhost:3000/messages/+18001112233)
+
+## Troubleshooting
+
+Inbox Loads too slow:
+```
+nano ./sms-messages-app/routes/index.js
+```
+Then modify the line 15 to specify the number of messages to return. In this case, it returns the first 10:
+```
+client.messages.list({to: config.phoneNumber,limit: 10}).then(function(messages) { 
+```
